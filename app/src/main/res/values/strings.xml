@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AndroidQuiz</string>
+    <string name="start">开始答题</string>
+    <string name="stop">答题完毕</string>
+    <string name="input_no">请输入学号</string>
+    <string name="input_answer">请输入答案</string>
+    <string name="save">保存</string>
+</resources>
