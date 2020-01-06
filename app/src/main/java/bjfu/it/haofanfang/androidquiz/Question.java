@@ -13,15 +13,25 @@ public class Question {
     private String answer;
 
 
-    public Question(String type, String question) {
-        this.type = type;
-        this.question = question;
+
+    public static Question[] getQuestions() {
+        return questions;
     }
 
-    public static final Question[] questions={
-            new Question("架构","自顶向下依次列举Android系统架构各层"),
-            new Question("编程","Android App开发支持编程语言包括？"),
-            new Question("SDK","Android开发者官网是？")
+    private String tanswer;
+
+
+    public Question(String type, String question, String tanswer) {
+
+        this.type = type;
+        this.question = question;
+        this.tanswer = tanswer;
+    }
+
+    public static final Question[] questions = {
+            new Question("天气", "北京下雪了？", "yes"),
+            new Question("考试", "移动开发都会了？", "no"),
+            new Question("心情", "今天你开心吗？", "no")
     };
 
     public String getType() {
@@ -46,6 +56,14 @@ public class Question {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getTanswer() {
+        return tanswer;
+    }
+
+    public void setTanswer(String tanswer) {
+        this.tanswer = tanswer;
     }
 
     @NonNull

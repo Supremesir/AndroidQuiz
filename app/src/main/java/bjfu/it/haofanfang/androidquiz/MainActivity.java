@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import static bjfu.it.haofanfang.androidquiz.Answer.EXTRA_ID;
+import static bjfu.it.haofanfang.androidquiz.Answer.tnum;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,24 +40,12 @@ public class MainActivity extends AppCompatActivity {
             count = savedInstanceState.getInt("seconds");
             running = savedInstanceState.getBoolean("running");
             wasrunning = savedInstanceState.getBoolean("wasrunning");
-
         }
 
         //启动秒表
         runTimer();
 
-        ArrayAdapter<Question> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,Question.questions);
-        questionList = findViewById(R.id.question_list);
-        questionList.setAdapter(listAdapter);
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent itemClickIntent = new Intent(MainActivity.this, Answer.class);
-                itemClickIntent.putExtra(EXTRA_ID, (int) id);
-                startActivity(itemClickIntent);
-            }
-        };
-        questionList.setOnItemClickListener(itemClickListener);
+
     }
 
     @Override
@@ -67,10 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClickStart(View view) {
-        Intent mediaIntent = new Intent(MainActivity.this, MediaPlayer.class);
-        startService(mediaIntent);
+        listAdapter();
         running = true;
-
     }
 
     @Override
@@ -87,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
         String xuehao = snoText.getText().toString();
         if (xuehao.equals("")) {
             Toast.makeText(this, "请输入学号！", Toast.LENGTH_SHORT).show();
-
         } else {
             running = false;
+            Toast.makeText(this, "答对了" + tnum + "道题！", Toast.LENGTH_SHORT).show();
             ContentValues questionValues = new ContentValues();
             questionValues.put("SNO", xuehao);
             questionValues.put("SECOND", count);
@@ -127,5 +114,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //从Question类中读取数据，显示list
+    private void listAdapter() {
+        ArrayAdapter<Question> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,Question.questions);
+        questionList = findViewById(R.id.question_list);
+        questionList.setAdapter(listAdapter);
+        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent itemClickIntent = new Intent(MainActivity.this, Answer.class);
+                itemClickIntent.putExtra(EXTRA_ID, (int) id);
+                startActivity(itemClickIntent);
+            }
+        };
+        questionList.setOnItemClickListener(itemClickListener);
+    }
+
+    public void onClickPlay(View view) {
+        Intent mediaIntent = new Intent(MainActivity.this, MediaPlayer.class);
+        startService(mediaIntent);
     }
 }

@@ -11,9 +11,12 @@ import android.widget.TextView;
 public class Answer extends AppCompatActivity {
 
     public static final String EXTRA_ID="questionid";
+    public static int tnum = 0;
     public int questionid;
     TextView quesText;
     EditText anweText;
+    Question question;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,8 @@ public class Answer extends AppCompatActivity {
 
         Intent intent = getIntent();
         questionid = (Integer) intent.getExtras().get(EXTRA_ID);
-        Question question = Question.questions[questionid];
+
+        question = Question.questions[questionid];
 
         quesText = findViewById(R.id.ques);
         quesText.setText(question.getQuestion());
@@ -34,9 +38,13 @@ public class Answer extends AppCompatActivity {
     }
 
     public void onClickSave(View view) {
+
         anweText = (EditText) findViewById(R.id.answ);
         String answer = anweText.getText().toString();
         Question.questions[questionid].setAnswer(answer);
+        if (answer.equals(question.getTanswer())) {
+            tnum++;
+        }
         finish();
     }
 }
