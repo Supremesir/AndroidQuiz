@@ -13,26 +13,26 @@ import androidx.annotation.Nullable;
 
 public class MyDBHelper extends SQLiteOpenHelper {
 
-    private static final String DB_NAME="AndroidQuzi";
+    private static final String DB_NAME="AndroidQuiz";
     private static final int DB_VERSION=1;
 
     public MyDBHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-}
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE RECORD(_id INTEGER PRIMARY KEY AUTOINCREMENT,"
-        +"SNO TEXT,"
-        +"SECOND INTEGER,"
-        +"ANW1 TEXT,"
-        +"ANW2 TEXT,"
-        +"ANW3 TEXT);");
-
+                + "SNO TEXT,"
+                + "SECOND INTEGER,"
+                + "ANW1 TEXT,"
+                + "ANW2 TEXT,"
+                + "ANW3 TEXT);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 }

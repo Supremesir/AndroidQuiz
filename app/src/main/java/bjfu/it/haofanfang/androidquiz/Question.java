@@ -8,25 +8,19 @@ import androidx.annotation.NonNull;
  */
 
 public class Question {
-    private String type;
-    private String question;
-    private String answer;
+    private String type;    //问题类型
+    private String question;    //问题
+    private String answer;  //回答
+    private String tanswer; //正确答案
 
 
-
-    public static Question[] getQuestions() {
-        return questions;
-    }
-
-    private String tanswer;
-
-
+    //有参构造
     public Question(String type, String question, String tanswer) {
-
         this.type = type;
         this.question = question;
         this.tanswer = tanswer;
     }
+
 
     public static final Question[] questions = {
             new Question("天气", "北京下雪了？", "yes"),
@@ -66,6 +60,7 @@ public class Question {
         this.tanswer = tanswer;
     }
 
+    //重要！！！
     @NonNull
     @Override
     public String toString() {

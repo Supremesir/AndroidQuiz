@@ -14,11 +14,13 @@ public class MediaService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-            MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.notice);
-            mediaPlayer.start();
+        //音频服务创建
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.notice);
+        //启动音频服务
+        mediaPlayer.start();
         Log.v("music", "start music");
-        }
-
     }
+}
+
 
 
