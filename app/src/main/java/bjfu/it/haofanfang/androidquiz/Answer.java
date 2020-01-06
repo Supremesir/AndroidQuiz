@@ -23,6 +23,7 @@ public class Answer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
 
+        //获取item点击里传来的数据（点击了第几项）
         Intent intent = getIntent();
         questionid = (Integer) intent.getExtras().get(EXTRA_ID);
 
@@ -42,7 +43,7 @@ public class Answer extends AppCompatActivity {
     public void onClickSave(View view) {
 
         //获取用户填写的答案
-        anweText = (EditText) findViewById(R.id.answ);
+        anweText =  findViewById(R.id.answ);
         String answer = anweText.getText().toString();
 
         //判断填入的答案与正确答案相同的个数
