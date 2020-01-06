@@ -41,6 +41,7 @@ public class Answer extends AppCompatActivity {
 
         anweText = (EditText) findViewById(R.id.answ);
         String answer = anweText.getText().toString();
+
         Question.questions[questionid].setAnswer(answer);
         if (answer.equals(question.getTanswer())) {
             tnum++;

@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         //启动秒表
         runTimer();
-
 
     }
 
@@ -133,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickPlay(View view) {
-        Intent mediaIntent = new Intent(MainActivity.this, MediaPlayer.class);
+        Intent mediaIntent = new Intent(this, MediaService.class);
         startService(mediaIntent);
+        Log.v("music", "play music");
     }
 }

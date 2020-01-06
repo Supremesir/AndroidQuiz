@@ -10,8 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".MediaService"
-            android:exported="false"></service>
+            android:name=".MediaService"/>
 
         <activity android:name=".Answer" />
         <activity android:name=".MainActivity">
