@@ -94,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        //点击结束答题后清零计时器
+        count = 0;
+
     }
 
     //计时器计时函数
@@ -122,18 +125,30 @@ public class MainActivity extends AppCompatActivity {
 
     //从Question类中读取数据，显示list
     private void listAdapter() {
-        ArrayAdapter<Question> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,Question.questions);
+
         questionList = findViewById(R.id.question_list);
-        questionList.setAdapter(listAdapter);
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+        questionList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Question.questions));
+        questionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent itemClickIntent = new Intent(MainActivity.this, Answer.class);
                 itemClickIntent.putExtra(EXTRA_ID, (int) id);
                 startActivity(itemClickIntent);
             }
-        };
-        questionList.setOnItemClickListener(itemClickListener);
+        });
+
+//        ArrayAdapter<Question> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Question.questions);
+//        questionList = findViewById(R.id.question_list);
+//        questionList.setAdapter(listAdapter);
+//        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent itemClickIntent = new Intent(MainActivity.this, Answer.class);
+//                itemClickIntent.putExtra(EXTRA_ID, (int) id);
+//                startActivity(itemClickIntent);
+//            }
+//        };
+//        questionList.setOnItemClickListener(itemClickListener);
     }
 
     //点击播放须知的响应函数
