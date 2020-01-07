@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
     public void onClickStart(View view) {
         //点击开始答题时才显示list
         listAdapter();
+        //开始时先清零计数器
+        count = 0;
+        //开始时清零答对题数
+        tnum = 0;
         running = true;
     }
 
@@ -73,11 +77,13 @@ public class MainActivity extends AppCompatActivity {
 
         snoText = findViewById(R.id.sno);
         String xuehao = snoText.getText().toString();
+        //判断是否填了学号
         if (xuehao.equals("")) {
             Toast.makeText(this, "请输入学号！", Toast.LENGTH_SHORT).show();
         } else {
             running = false;
             Toast.makeText(this, "答对了" + tnum + "道题！", Toast.LENGTH_SHORT).show();
+
             ContentValues questionValues = new ContentValues();
             questionValues.put("SNO", xuehao);
             questionValues.put("SECOND", count);
@@ -95,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //点击结束答题后清零计时器
-        count = 0;
+        //count = 0;
 
     }
 
@@ -136,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(itemClickIntent);
             }
         });
+
 
 //        ArrayAdapter<Question> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Question.questions);
 //        questionList = findViewById(R.id.question_list);

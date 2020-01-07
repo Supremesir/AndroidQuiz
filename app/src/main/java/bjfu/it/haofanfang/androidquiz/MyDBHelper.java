@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 
 public class MyDBHelper extends SQLiteOpenHelper {
 
-    private static final String DB_NAME="AndroidQuiz";
+    private static final String DB_NAME="AndroidQuiz.db";
     private static final int DB_VERSION=1;
 
     public MyDBHelper(@Nullable Context context) {
